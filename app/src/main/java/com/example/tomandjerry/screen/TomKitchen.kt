@@ -1,7 +1,6 @@
 package com.example.tomandjerry.screen
 
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,14 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,8 +31,6 @@ import com.example.tomandjerry.R
 import com.example.tomandjerry.ui.theme.Blue
 import com.example.tomandjerry.ui.theme.DarkBlue
 import com.example.tomandjerry.ui.theme.LightBlue
-import com.example.tomandjerry.ui.theme.LightBlueGradiant
-import com.example.tomandjerry.ui.theme.LightGray
 import com.example.tomandjerry.ui.theme.LighterBlue
 import com.example.tomandjerry.ui.theme.SecondaryTextColor
 import com.example.tomandjerry.ui.theme.White
@@ -217,17 +212,17 @@ private fun DetailsSection() {
             .horizontalScroll(rememberScrollState())
     ) {
         DetailCard(
-            iconRes = R.drawable.money_bag, // Replace with your icon
+            iconRes = R.drawable.temperature, // Replace with your icon
             title = "1000 V",
             subtitle = "Temperature"
         )
         DetailCard(
-            iconRes = R.drawable.money_bag, // Replace with your icon
+            iconRes = R.drawable.timer, // Replace with your icon
             title = "3 sparks",
             subtitle = "Time"
         )
         DetailCard(
-            iconRes = R.drawable.money_bag, // Replace with your icon
+            iconRes = R.drawable.evil, // Replace with your icon
             title = "1M 12K",
             subtitle = "No. of deaths"
         )
@@ -242,14 +237,13 @@ private fun HeaderTom() {
             .height(180.dp)
             .padding(bottom = 16.dp)
     ) {
-
         Box(
             modifier = Modifier
                 .fillMaxHeight()
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ellipse3),
-                contentDescription = "Pasta Image",
+                contentDescription = null,
                 modifier = Modifier
 
             )
