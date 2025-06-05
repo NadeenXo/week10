@@ -44,7 +44,6 @@ fun TomAccount(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .background(DarkBlue)
     ) {
-        // Top Profile Header
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -73,7 +72,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
             )
         }
 
-        // Main Content Box
+        // Boxes
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -82,7 +81,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
 
-                // Stats Row
+                // Stats
                 Column {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -207,7 +206,6 @@ fun SettingsItem(text: String, iconRes: Int) {
         Box(
             modifier = Modifier
                 .size(32.dp)
-//                .background(DarkBlue, RoundedCornerShape(6.dp))
         ) {
             Image(
                 painter = painterResource(id = iconRes),
@@ -215,7 +213,6 @@ fun SettingsItem(text: String, iconRes: Int) {
                 modifier = Modifier.size(32.dp)
 
             )
-//            Spacer(modifier = Modifier.padding(8.dp))
         }
         Text(
             text = text,

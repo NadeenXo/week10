@@ -37,7 +37,6 @@ import com.example.tomandjerry.ui.theme.White
 
 @Composable
 fun TomKitchen(modifier: Modifier) {
-    // Main content
     Column(
         modifier = modifier
             .background(Blue)
@@ -93,7 +92,7 @@ fun TomKitchen(modifier: Modifier) {
                     ) {
 
                         Icon(
-                            painter = painterResource(id = R.drawable.money_bag), // Replace with your icon
+                            painter = painterResource(id = R.drawable.money_bag),
                             contentDescription = "Cheese Icon",
                             tint = DarkBlue,
                         )
@@ -212,17 +211,17 @@ private fun DetailsSection() {
             .horizontalScroll(rememberScrollState())
     ) {
         DetailCard(
-            iconRes = R.drawable.temperature, // Replace with your icon
+            iconRes = R.drawable.temperature,
             title = "1000 V",
             subtitle = "Temperature"
         )
         DetailCard(
-            iconRes = R.drawable.timer, // Replace with your icon
+            iconRes = R.drawable.timer,
             title = "3 sparks",
             subtitle = "Time"
         )
         DetailCard(
-            iconRes = R.drawable.evil, // Replace with your icon
+            iconRes = R.drawable.evil,
             title = "1M 12K",
             subtitle = "No. of deaths"
         )
@@ -248,7 +247,6 @@ private fun HeaderTom() {
 
             )
         }
-        // Icons and text at the top left
         Column(
             modifier = Modifier
                 .fillMaxHeight()
@@ -277,7 +275,6 @@ private fun HeaderTom() {
             Row(
                 modifier = Modifier
                     .padding(start = 16.dp, bottom = 16.dp)
-//                    .align(Alignment.BottomStart)
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.money_bag), //todo Replace with your icon
