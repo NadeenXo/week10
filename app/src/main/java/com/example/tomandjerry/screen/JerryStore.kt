@@ -77,7 +77,9 @@ fun JerryStore(modifier: Modifier) {
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 360, heightDp = 1085)
+@Preview(showBackground = true, widthDp = 360, heightDp = 862)
+@Preview(showBackground = true, widthDp = 360, heightDp = 827)
 @Composable
 fun PreviewJerryStore() {
     JerryStore(modifier = Modifier)

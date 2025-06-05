@@ -260,7 +260,7 @@ private fun HeaderTom() {
                     .padding(16.dp)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.money_bag), //todo Replace with your icon
+                    painter = painterResource(id = R.drawable.ruler),
                     contentDescription = "High Tension Icon",
                     tint = Color.White
                 )
@@ -277,7 +277,7 @@ private fun HeaderTom() {
                     .padding(start = 16.dp, bottom = 16.dp)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.money_bag), //todo Replace with your icon
+                    painter = painterResource(id = R.drawable.chef),
                     contentDescription = "Shocking Foods Icon",
                     tint = Color.White
                 )
@@ -384,7 +384,9 @@ fun InstructionItem(step: Int, description: String) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 360, heightDp = 1085)
+@Preview(showBackground = true, widthDp = 360, heightDp = 862)
+@Preview(showBackground = true, widthDp = 360, heightDp = 827)
 @Composable
 fun PreviewTomKitchen() {
     TomKitchen(modifier = Modifier)

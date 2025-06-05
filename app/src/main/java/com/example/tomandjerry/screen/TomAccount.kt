@@ -222,8 +222,9 @@ fun SettingsItem(text: String, iconRes: Int) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
+@Preview(showBackground = true, widthDp = 360, heightDp = 1085)
+@Preview(showBackground = true, widthDp = 360, heightDp = 862)
+@Preview(showBackground = true, widthDp = 360, heightDp = 827)@Composable
 fun PreviewTomAccount() {
     TomAccount(modifier = Modifier)
 }
