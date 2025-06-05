@@ -18,7 +18,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             TomAndJerryTheme {
                 Scaffold { innerPadding ->
-                    JerryStore(modifier = Modifier.padding(innerPadding).padding(8.dp))
+                    JerryStore(modifier = Modifier
+                        .padding(innerPadding)
+                        .padding(8.dp))
                 }
             }
         }

@@ -1,6 +1,5 @@
 package com.example.tomandjerry.screen
 
-import android.R.attr.contentDescription
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.Image
@@ -23,8 +22,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,116 +42,48 @@ import com.example.tomandjerry.ui.theme.White
 
 @Composable
 fun TomKitchen(modifier: Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-//            .background(color = Blue)
-//            .padding(
-//                horizontal = 16.dp,
-//                vertical = 8.dp
-//            )
-    ) {
-        ElectricTomPastaScreen()
-    }
-}
-
-@Composable
-fun ElectricTomPastaScreen() {
     // Main content
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
+        modifier = modifier
+            .background(Blue)
     ) {
         // Header Section
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(180.dp)
-                .background(color = Blue)
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ellipse3),
-                contentDescription = "Pasta Image",
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .fillMaxHeight()
-                    .offset(x = (10).dp)
-//                    .size(200.dp)
-            )
-            Image(
-                painter = painterResource(id = R.drawable.pasta),
-                contentDescription = "Pasta Image",
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .size(200.dp)
-                    .clip(RoundedCornerShape(16.dp))
-            )
-
-
-            // Icons and text at the top left
-            Column(
-                modifier = Modifier,
-//                horizontalAlignment = Alignment.CenterHorizontally,
-//                verticalArrangement = Arrangement.Bottom
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(16.dp)
-//                    .align(Alignment.TopStart),
-
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.money_bag), // Replace with your icon
-                        contentDescription = "High Tension Icon",
-                        tint = Color.White
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "High tension",
-                        color = Color.White,
-                        fontSize = 16.sp
-                    )
-                }
-
-                Row(
-                    modifier = Modifier
-                        .padding(start = 16.dp, bottom = 16.dp)
-//                    .align(Alignment.BottomStart)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.money_bag), // Replace with your icon
-                        contentDescription = "Shocking Foods Icon",
-                        tint = Color.White
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Shocking foods",
-                        color = Color.White,
-                        fontSize = 16.sp
-                    )
-                }
-            }
-        }
-
+        HeaderTom()
         // Content Section
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-//                .padding(16.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(color = LightBlue)
-//                .shadow(elevation = 4.dp, shape = RoundedCornerShape(8.dp))
+                .fillMaxSize()
+                .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .background(LightBlue)
         ) {
             Column(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(LightBlue)
+                    .padding(horizontal = 16.dp, vertical = 34.dp)
             ) {
                 // Title
-                Text(
-                    text = "Electric Tom pasta",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Electric Tom pasta",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Icon(
+                        painter = painterResource(R.drawable.favorite_icon),
+                        contentDescription = null,
+                        tint = DarkBlue,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .offset(y = (12).dp)
+                    )
+                }
 
                 // Cheese badge
                 Box(
@@ -162,13 +96,18 @@ fun ElectricTomPastaScreen() {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+
                         Icon(
                             painter = painterResource(id = R.drawable.money_bag), // Replace with your icon
                             contentDescription = "Cheese Icon",
-                            tint = DarkBlue
+                            tint = DarkBlue,
                         )
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text(text = "5 cheeses", color = DarkBlue)
+                        Text(
+                            text = "5 cheeses",
+                            color = DarkBlue,
+                            fontWeight = FontWeight.Normal
+                        )
                     }
                 }
 
@@ -185,87 +124,196 @@ fun ElectricTomPastaScreen() {
                     fontWeight = FontWeight.Normal
                 )
 
-                // Details Section
-                Text(
-                    text = "Details",
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 18.dp)
-                )
+                DetailsSection()
 
-                Row(
-                    modifier = Modifier
-                        .padding(top = 8.dp)
-                        .height(100.dp)
-                        .horizontalScroll(rememberScrollState())
-                ) {
-                    DetailCard(
-                        iconRes = R.drawable.money_bag, // Replace with your icon
-                        title = "1000 V",
-                        subtitle = "Temperature"
-                    )
-                    DetailCard(
-                        iconRes = R.drawable.money_bag, // Replace with your icon
-                        title = "3 sparks",
-                        subtitle = "Time"
-                    )
-                    DetailCard(
-                        iconRes = R.drawable.money_bag, // Replace with your icon
-                        title = "1M 12K",
-                        subtitle = "No. of deaths"
-                    )
-                }
+                PreparationSection()
 
-                // Preparation Method
-                Text(
-                    text = "Preparation method",
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 16.dp)
-                )
-
-                Column(
-                    modifier = Modifier.padding(horizontal = 2.dp, vertical = 8.dp)
-                ) {
-                    InstructionItem(step = 1, description = "Put the pasta in a toaster.")
-                    InstructionItem(step = 2, description = "Pour battery juice over it.")
-                    InstructionItem(step = 3, description = "Wait for the spark to ignite.")
-                    InstructionItem(step = 4, description = "Serve with an insulating glove.")
-                }
-
-                // Add to Cart Button
-                Button(
-                    onClick = { },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 16.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = DarkBlue
-                    ),
-
-                    ) {
-                    Text(
-                        text = "Add to cart",
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = ". ",
-                        color = Color.White
-                    )
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = "3 cheeses",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                        Text(
-                            text = "5 cheeses",
-                            color = Color.White,
-                            fontSize = 10.sp
-                        )
-                    }
-                }
+                AddToCartBtn()
             }
         }
+    }
+}
+
+@Composable
+private fun AddToCartBtn() {
+    Button(
+        onClick = { },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 16.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = DarkBlue
+        ),
+
+        ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+
+            Text(
+                text = "Add to cart",
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = ".",
+                color = SecondaryTextColor,
+                fontSize = 32.sp,
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .offset(y = -(5).dp)
+            )
+        }
+        Spacer(modifier = Modifier.width(8.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = "3 cheeses",
+                color = Color.White,
+                fontSize = 12.sp,
+            )
+            Text(
+                text = "5 cheeses",
+                color = Color.White,
+                fontSize = 10.sp,
+                style = TextStyle(textDecoration = TextDecoration.LineThrough)
+            )
+        }
+    }
+}
+
+@Composable
+private fun PreparationSection() {
+    Text(
+        text = "Preparation method",
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(top = 16.dp),
+        fontSize = 20.sp
+    )
+
+    Column(
+        modifier = Modifier.padding(horizontal = 2.dp, vertical = 8.dp)
+    ) {
+        InstructionItem(step = 1, description = "Put the pasta in a toaster.")
+        InstructionItem(step = 2, description = "Pour battery juice over it.")
+        InstructionItem(step = 3, description = "Wait for the spark to ignite.")
+        InstructionItem(step = 4, description = "Serve with an insulating glove.")
+    }
+}
+
+@Composable
+private fun DetailsSection() {
+    Text(
+        text = "Details",
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(top = 18.dp),
+        fontSize = 20.sp
+    )
+
+    Row(
+        modifier = Modifier
+            .padding(top = 8.dp)
+            .height(120.dp)
+            .horizontalScroll(rememberScrollState())
+    ) {
+        DetailCard(
+            iconRes = R.drawable.money_bag, // Replace with your icon
+            title = "1000 V",
+            subtitle = "Temperature"
+        )
+        DetailCard(
+            iconRes = R.drawable.money_bag, // Replace with your icon
+            title = "3 sparks",
+            subtitle = "Time"
+        )
+        DetailCard(
+            iconRes = R.drawable.money_bag, // Replace with your icon
+            title = "1M 12K",
+            subtitle = "No. of deaths"
+        )
+    }
+}
+
+@Composable
+private fun HeaderTom() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(180.dp)
+            .padding(bottom = 16.dp)
+    ) {
+
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ellipse3),
+                contentDescription = "Pasta Image",
+                modifier = Modifier
+
+            )
+        }
+        // Icons and text at the top left
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .offset(x = (-50).dp),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Center
+        ) {
+
+            Row(
+                modifier = Modifier
+                    .padding(16.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.money_bag), //todo Replace with your icon
+                    contentDescription = "High Tension Icon",
+                    tint = Color.White
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "High tension",
+                    color = Color.White,
+                    fontSize = 16.sp
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .padding(start = 16.dp, bottom = 16.dp)
+//                    .align(Alignment.BottomStart)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.money_bag), //todo Replace with your icon
+                    contentDescription = "Shocking Foods Icon",
+                    tint = Color.White
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Shocking foods",
+                    color = Color.White,
+                    fontSize = 16.sp
+                )
+            }
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(180.dp)
+                .offset(x = -(20).dp, y = (25).dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.pasta),
+                contentDescription = "Pasta Image",
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .size(200.dp)
+            )
+        }
+
     }
 }
 
@@ -279,7 +327,6 @@ fun DetailCard(
         modifier = Modifier
             .width(120.dp)
             .padding(end = 8.dp),
-//        elevation = 4.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
         Column(
@@ -293,7 +340,8 @@ fun DetailCard(
             Icon(
                 painter = painterResource(id = iconRes),
                 contentDescription = null,
-                tint = DarkBlue
+                tint = DarkBlue,
+                modifier = Modifier.size(24.dp)
             )
             Text(
                 text = title,
@@ -314,7 +362,7 @@ fun InstructionItem(step: Int, description: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp)
+            .padding(vertical = 8.dp)
             .background(
                 color = White,
                 shape = RoundedCornerShape(10.dp)
